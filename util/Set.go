@@ -14,7 +14,7 @@ type Set struct {
 
 // Add Adds the value to the set, returning true if it's a new value
 func (set *Set) Add(val interface{}) bool {
-	if _, ok := set.data[val]; !ok {
+	if !set.Contains(val) {
 		set.data[val] = struct{}{}
 		return true
 	}
@@ -29,7 +29,7 @@ func (set *Set) Contains(val interface{}) bool {
 
 // Remove Removes the value from the set if it exists and returns true if it did
 func (set *Set) Remove(val interface{}) bool {
-	if val, ok := set.data[val]; ok {
+	if set.Contains(val) {
 		delete(set.data, val)
 		return true
 	}
