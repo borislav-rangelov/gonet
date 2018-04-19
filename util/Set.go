@@ -1,8 +1,15 @@
 package util
 
+type setMap map[interface{}]struct{}
+
+// NewSet Creates a new set
+func NewSet() *Set {
+	return &Set{data: make(setMap)}
+}
+
 // Set A basic implementation of a set, using a map
 type Set struct {
-	data map[interface{}]struct{}
+	data setMap
 }
 
 // Add Adds the value to the set, returning true if it's a new value
